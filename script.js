@@ -1,4 +1,4 @@
-// CONFIGURAÇÕES DE NOMES CORRIGIDAS
+// CONFIGURAÇÕES DE NOMES CORRIGIDAS (Mantido igual)
 const nomesBrasil = { 2: "Alisson", 3: "Bento", 4: "Marquinhos", 5: "Éder Militão", 6: "Gabriel Magalhães", 7: "Danilo", 8: "Wesley", 9: "Lucas Paquetá", 10: "Casemiro", 11: "Bruno Guimarães", 12: "Luiz Henrique", 14: "Vinícius Júnior", 15: "Rodrygo", 16: "João Pedro", 17: "Matheus Cunha", 18: "Gabriel Martinelli", 19: "Raphinha", 20: "Estêvão" };
 const nomesMexico = { 2: "Luis Malagón", 3: "Johan Vásquez", 4: "Jorge Sánchez", 5: "César Montes", 6: "Jesús Gallardo", 7: "Israel Reves", 8: "Diego Lainez", 9: "Carlos Rodríguez", 10: "Edson Álvarez", 11: "Orbelín Pineda", 12: "Marcel Ruiz", 14: "Érick Sánchez", 15: "Hirving Lozano", 16: "Santiago Giménez", 17: "Raúl Jiménez", 18: "Alexis Vega", 19: "Roberto Alvarado", 20: "César Huerta" };
 const nomesArgentina = { 2: "Emiliano Martínez", 3: "Nahuel Molina", 4: "Cristian Romero", 5: "Nicolás Otamendi", 6: "Nicolás Tagliafico", 7: "Leonardo Balerdi", 8: "Enzo Fernández", 9: "Alexis Mac Allister", 10: "Rodrigo De Paul", 11: "Exequiel Palacios", 12: "Leandro Paredes", 14: "Nico Paz", 15: "Franco Mastantuono", 16: "Nico González", 17: "Lionel Messi", 18: "Lautaro Martínez", 19: "Julián Alvarez", 20: "Giuliano Simeone" };
@@ -9,7 +9,6 @@ const nomesEspanha = { 2: "Unai Simón", 3: "Robin Le Normand", 4: "Aymeric Lapo
 const nomesCocaCola = { 1: "Lamine Yamal", 2: "Joshua Kimmich", 3: "Harry Kane", 4: "Santiago Giménez", 5: "Joško Gvardiol", 6: "Federico Valverde", 7: "Jefferson Lerma", 8: "Enner Valencia", 9: "Gabriel Magalhães", 10: "Virgil Van Dijk", 11: "Alphonso Davies", 12: "Emilíano Martinez", 13: "Raúl Jiménez", 14: "Lautaro Martinez" };
 const nomesFWC = { 0: "Logo da Panini", 1: "Emblema Oficial 1", 2: "Emblema Oficial 2", 3: "Mascotes Oficiais", 4: "Slogan Oficial", 5: "Bola Oficial", 6: "Emblema Canadá", 7: "Emblema México", 8: "Emblema EUA", 9: "Itália de 1934", 10: "Uruguai de 1950", 11: "Alemanha de 1954", 12: "Brasil de 1962", 13: "Alemanha de 1974", 14: "Argentina de 1986", 15: "Brasil de 1994", 16: "Brasil de 2002", 17: "Itália de 2006", 18: "Alemanha de 2014", 19: "Argentina de 2022" };
 
-// MAPA DE CORES DAS SELEÇÕES
 const coresSelecoes = {
     "BRA": "#FFDF00", "ARG": "#74ACDF", "FRA": "#002395", "POR": "#E42518", 
     "NED": "#FF4F00", "GER": "#111111", "ESP": "#C60B1E", "BEL": "#EF3340", 
@@ -162,6 +161,33 @@ function setupLogic() {
         });
     };
     document.getElementById('btn-tema').onclick = () => document.body.classList.toggle('light-mode');
+
+    // LÓGICA DO BOTÃO RESET ADICIONADA AQUI
+    document.getElementById('btn-reset').onclick = () => {
+        const confirmar = confirm("⚠️ ATENÇÃO: Você tem certeza que deseja limpar todo o álbum?\n\nEsta ação é irreversível e zerará todo o seu progresso.");
+        
+        if (confirmar) {
+            // Remove a marcação de colada de todas as figurinhas
+            document.querySelectorAll('.figurinha').forEach(fig => {
+                fig.classList.remove('colada');
+                const badge = fig.querySelector('.badge-repetida');
+                badge.innerText = "0";
+                badge.style.display = 'none';
+            });
+
+            // Remove a marcação das Legends
+            document.querySelectorAll('.box-extra').forEach(box => {
+                box.classList.remove('active');
+            });
+
+            // Atualiza os contadores no cabeçalho
+            atualizarStats();
+            
+            // Volta para o topo da página
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            alert("Álbum reiniciado com sucesso!");
+        }
+    };
 }
 
 function atualizarStats() {
