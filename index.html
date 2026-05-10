@@ -1,1 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copa 2026 | Álbum Completo</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body class="dark-mode">
 
+    <header class="navbar">
+        <div class="header-top">
+            <div class="brand">
+                <h1><span class="logo-icon">🏆</span> FIFA WORLD CUP <span>2026</span></h1>
+            </div>
+            <div class="actions">
+                <button id="btn-tema" class="ui-button">🌓 Alternar Tema</button>
+            </div>
+        </div>
+        
+        <div class="header-main">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <label>Progresso Geral</label>
+                    <div class="progress-bar-container">
+                        <div id="bar-fill" class="progress-fill"></div>
+                    </div>
+                    <span id="perc-total">0%</span>
+                </div>
+                <div class="stat-card">
+                    <label>Coladas</label>
+                    <span id="qtd-coladas" class="value">0</span>
+                </div>
+                <div class="stat-card destaque-faltam">
+                    <label>Faltam</label>
+                    <span id="qtd-faltam" class="value">994</span>
+                </div>
+                <div class="stat-card">
+                    <label>Repetidas</label>
+                    <span id="qtd-repetidas" class="value">0</span>
+                </div>
+                <div class="stat-card destaque">
+                    <label>Legends</label>
+                    <span id="qtd-legends" class="value">0/80</span>
+                </div>
+            </div>
+
+            <div class="search-box">
+                <input type="text" id="inputBusca" placeholder="Pesquise por Nome, Seleção, Sigla ou Número...">
+                <div id="erro-busca" class="erro-balao">Nenhuma figurinha ou seleção encontrada!</div>
+            </div>
+        </div>
+    </header>
+
+    <main id="album-display" class="container"></main>
+
+    <script src="script.js"></script>
+</body>
+</html>
