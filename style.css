@@ -136,3 +136,18 @@ body {
 
 .ui-button { padding: 8px 15px; border-radius: 8px; border: none; background: rgba(255,255,255,0.2); color: white; cursor: pointer; font-weight: 600; }
 .erro-balao { position: absolute; top: 55px; left: 50%; transform: translateX(-50%); background: var(--secondary); color: white; padding: 8px 20px; border-radius: 8px; font-size: 0.85rem; display: none; z-index: 100; }
+
+.btn-danger {
+    background: rgba(198, 40, 40, 0.2) !important;
+    border: 1px solid #c62828 !important;
+    color: #ff5252 !important;
+    transition: 0.3s;
+}
+
+.btn-danger:hover {
+    background: #c62828 !important;
+    color: white !important;
+}
+
+/* Garante que os botões fiquem alinhados */
+.actions { display: flex; gap: 10px; }
